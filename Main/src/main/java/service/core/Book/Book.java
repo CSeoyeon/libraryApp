@@ -2,17 +2,20 @@ package service.core.Book;
 
 import service.core.loan.Loan;
 
+import java.util.ArrayList;
+
 public class Book {
     private Long id;
     private String title;
-    private String author;
-    private Loan loan;
+    private String[] authors;
+    private LoanState loanState;
 
-    public Book(Long id, String title, String author, Loan loan) {
+    public Book(Long id, String title, String[] authors, LoanState loanState) {
         this.id = id;
         this.title = title;
-        this.author = author;
-        this.loan = loan;
+        this.authors = authors;
+        this.loanState = loanState;
+
     }
 
     public Long getId() {
@@ -31,19 +34,19 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
+    public String[] getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthors(String[] authors) {
+        this.authors = authors;
     }
 
-    public Loan getLoan() {
-        return loan;
+    public LoanState getLoanState() {
+        return loanState;
     }
 
-    public void setLoan(Loan loan) {
-        this.loan = loan;
+    public void setLoanState(LoanState loanState) {
+        this.loanState = loanState;
     }
 }

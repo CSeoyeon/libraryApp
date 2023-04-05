@@ -5,10 +5,10 @@ import java.util.Map;
 
 public class MemoryBorrowerRepository implements BorrowerRepository{
 
-    private static Map<Long, Borrower> store = new HashMap<>();
+    private static Map<Long, Borrower> store_Borrower = new HashMap<>();
     @Override
     public void save(Borrower borrower) {
-        store.put(borrower.getId(), borrower);
+        store_Borrower.put(borrower.getId(), borrower);
     }
 
 }
