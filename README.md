@@ -1,6 +1,6 @@
 # libraryApp
 
-사용 언어: java
+사용 언어: 순수 java, DB연결X  
 
 맡은 역할: dgm 제작, (4인 1팀) Book, Loan 클래스 작성 
 
