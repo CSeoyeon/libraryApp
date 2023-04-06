@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import service.core.AppConfig;
 import org.assertj.core.api.*;
 
+import java.util.ArrayList;
+
 
 class BorrowerServiceTest {
 
@@ -21,7 +23,8 @@ class BorrowerServiceTest {
 
     @Test
     void join() {
-        Borrower borrower = new Borrower(1L, "member");
+        ArrayList<Long> onLoanBook_id = new ArrayList<>();
+        Borrower borrower = new Borrower(1L, "member", onLoanBook_id);
         borrowerService.join(borrower);
 
         Assertions.assertThat(borrower.getName()).isEqualTo("member");

@@ -1,13 +1,11 @@
 package service.core;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import service.core.Book.Book;
 import service.core.Book.BookRegisterService;
-import service.core.Book.LoanState;
 import service.core.Borrower.Borrower;
 import service.core.Borrower.BorrowerService;
 import service.core.loan.LoanService;
+import service.core.loan.LoanState;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -43,7 +41,8 @@ public class MainApplication {
                     Long userId = Long.parseLong(br.readLine());
                     displayMenu.registerBorrower_showingText2();
                     String name = br.readLine();
-                    Borrower borrower = new Borrower(userId, name);
+                    ArrayList<Long> onLoanBook_id = new ArrayList<>();
+                    Borrower borrower = new Borrower(userId, name, onLoanBook_id);
                     borrowerService.join(borrower);
                     break;
 
@@ -63,10 +62,11 @@ public class MainApplication {
                     break;
 
                 case "3":
-                  ArrayList<Book> possible_bookArrayList = loanService.LoanImpossibleBooks();
+                  ArrayList<Book> possible_bookArrayList = loanService.LoanPossibleBooks();
                     displayMenu.showingLoanPossibleBook_showingText1(possible_bookArrayList.size());
                     for(Book x : possible_bookArrayList){
-                        System.out.printf("%s, %s",x.getId(), x.getTitle());
+                        System.out.printf("고유번호: %s, 제목: %s",x.getId(), x.getTitle());
+                        System.out.printf(" 저자 : ");
                         for(String t : x.getAuthors()){
                             System.out.printf("%s", t);
                         }
@@ -80,7 +80,8 @@ public class MainApplication {
                     ArrayList<Book> impossible_bookArrayList = loanService.LoanImpossibleBooks();
                     displayMenu.showingLoanImpossibleBook_showingText1(impossible_bookArrayList.size());
                     for(Book x : impossible_bookArrayList){
-                        System.out.printf("%s, %s",x.getId(), x.getTitle());
+                        System.out.printf("고유번호: %s, 제목: %s",x.getId(), x.getTitle());
+                        System.out.printf(" 저자 : ");
                         for(String t : x.getAuthors()){
                             System.out.printf("%s", t);
                         }
@@ -90,9 +91,43 @@ public class MainApplication {
                     break;
 
                 case "5":
+                    displayMenu.LoanBook_showingText1();
+                    Long onLoanBorrowerId = Long.valueOf(br.readLine());
+                    if(loanService.registerBorrowerVerification(onLoanBorrowerId) == LoanState.POSSIBLE_LOAN){
+                        displayMenu.LoanBook_showingText4();
+                        Long onLoanBookId = Long.valueOf(br.readLine());
+                        if(loanService.registerBookVerification(onLoanBorrowerId) == LoanState.POSSIBLE_LOAN){
+                            if(loanService.bookConfirm(onLoanBorrowerId) == LoanState.POSSIBLE_LOAN){
+                                if(loanService.borrowerConfirm(onLoanBorrowerId) == LoanState.POSSIBLE_LOAN){
+                                    if(loanService.bookLoan(onLoanBookId, onLoanBorrowerId) == LoanState.COMPLETE_LOAN){
+                                        displayMenu.LoanBook_showingText5();
+                                    }
+                                }else{
+                                    displayMenu.LoanBook_showingText3();}
+                            }
+                        } else {
+                            displayMenu.LoanBook_showingText6();
+                        }
+                    } else displayMenu.LoanBook_showingText2();
+
                     break;
 
                 case "6":
+                    displayMenu.backLoan_showingText1();
+                    Long backLoanBorrowerId = Long.valueOf(br.readLine());
+                    if(loanService.registerBorrowerVerification(backLoanBorrowerId) == LoanState.POSSIBLE_LOAN){
+                        displayMenu.backLoan_showingText3();
+                        Long backLoanBookId = Long.valueOf(br.readLine());
+                        if(loanService.registerBookVerification(backLoanBookId) == LoanState.POSSIBLE_LOAN){
+                           if(loanService.bookConfirm(backLoanBookId) == LoanState.ON_LOAN ){
+                               if(loanService.backLoan(backLoanBookId, backLoanBorrowerId) == LoanState.COMPLETE_BACKLOAN) {
+                                   displayMenu.backLoan_showingText6();
+                               }
+                           } else displayMenu.backLoan_showingText5();
+                        }else  displayMenu. backLoan_showingText4();
+                    } else displayMenu.backLoan_showingText2();
+
+
                     break;
 
                 default:

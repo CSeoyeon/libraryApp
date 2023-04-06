@@ -8,8 +8,10 @@ import service.core.Borrower.BorrowerRepository;
 import service.core.Borrower.BorrowerService;
 import service.core.Borrower.BorrowerServiceImpl;
 import service.core.Borrower.MemoryBorrowerRepository;
+import service.core.loan.LoanRepository;
 import service.core.loan.LoanService;
 import service.core.loan.LoanServiceImpl;
+import service.core.loan.MemoryLoanRepository;
 
 public class AppConfig {
 
@@ -33,7 +35,8 @@ public class AppConfig {
 
     //LoanService
     public LoanService loanService(){
-        return new LoanServiceImpl(bookRepository());
+        return new LoanServiceImpl(bookRepository(), loanRepository(), borrowerRepository());
     }
+    private static LoanRepository loanRepository(){return new MemoryLoanRepository();}
 
 }

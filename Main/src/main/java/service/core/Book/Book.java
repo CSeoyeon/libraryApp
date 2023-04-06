@@ -1,8 +1,6 @@
 package service.core.Book;
 
-import service.core.loan.Loan;
-
-import java.util.ArrayList;
+import service.core.loan.LoanState;
 
 public class Book {
     private Long id;

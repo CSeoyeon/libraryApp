@@ -8,6 +8,15 @@ import java.util.ArrayList;
 public interface LoanService {
     ArrayList<Book> LoanPossibleBooks();
     ArrayList<Book> LoanImpossibleBooks();
-    void bookLoan(Book book, Borrower borrower);
-    void bookReturn(Book book, Borrower borrower);
+    LoanState bookLoan(Long bookId, Long borrowerId);
+    LoanState registerBorrowerVerification(Long borrowerId);
+    LoanState registerBookVerification(Long bookId);
+    LoanState borrowerConfirm(Long borrowerID);
+    LoanState bookConfirm(Long bookId);
+    void makeLoan(Long bookId, Long borrowerName);
+    void makeBackLoan(Long bookId, Long borrowerName);
+    LoanState backLoan(Long bookId, Long borrowerId);
+
+
+
 }

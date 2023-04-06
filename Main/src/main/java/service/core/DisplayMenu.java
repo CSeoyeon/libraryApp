@@ -35,25 +35,25 @@ public class DisplayMenu {
 
     //2
     public void registerBook_showingText1(){
-        System.out.println("등록 할 책의 고유번호를 입력하세요");
+        System.out.println("등록 할 도서의 고유번호를 입력하세요");
     }
     public void registerBook_showingText2(){
-        System.out.println("등록 할 책의 이름을 입력하세요.");
+        System.out.println("등록 할 도서의 이름을 입력하세요.");
     }
     public void registerBook_showingText3(){
-        System.out.println("등록 할 책의 저자를 입력하세요." + "\n" + "저자가 여러명인 경우 ,(쉼표)를 붙여주세요");
+        System.out.println("등록 할 도서의 저자를 입력하세요." + "\n" + "저자가 여러명인 경우 ,(쉼표)를 붙여주세요");
 
     }
 
     //3
     public void showingLoanPossibleBook_showingText1(int number){
-        System.out.printf("대출 가능한 책은 %d건 입니다. %n",number);
+        System.out.printf("대출 가능한 도서은 %d건 입니다. %n",number);
     }
 
     //4
     public void showingLoanImpossibleBook_showingText1(int number)
     {
-        System.out.printf("대출 가능한 책은 %d건 입니다. %n", number);
+        System.out.printf("대출중인 도서은 %d건 입니다. %n", number);
     }
 
     //5
@@ -67,21 +67,38 @@ public class DisplayMenu {
         System.out.println("대출 가능한 권수(5권)을 모두 대출하셨습니다.");
     }
     public void LoanBook_showingText4(){
-        System.out.println("대출할 책의 고유 번호를 입력하세요.");
+        System.out.println("대출할 도서의 고유 번호를 입력하세요.");
     }
     public void LoanBook_showingText5(){
         System.out.println("대출이 완료되었습니다.");
     }
+    public void LoanBook_showingText6(){
+        System.out.println("등록되지 않은 도서입니다.");
+    }
 
 
     //6
-    public void ReturnBook_showingText1(){
-        System.out.println("반납 할 책의 고유번호를 입력하세요.");
-    }
-    public void ReturnBook_showingText2(){
-        System.out.println("반납 완료하였습니다");
+    public void backLoan_showingText1(){
+        System.out.println("이용자의 아이디를 입력하세요");
     }
 
+    public void backLoan_showingText2(){
+        System.out.println("등록되지 않은 이용자입니다.");
+    }
+    public void backLoan_showingText3(){
+        System.out.println("반납 할 도서의 고유번호를 입력하세요");
+    }
+    public void backLoan_showingText4(){
+        System.out.println("등록되지 않은 도서입니다.");
+    }
+
+    public void backLoan_showingText5(){
+        System.out.println("대출 중인 도서가 아닙니다.");
+    }
+    public void backLoan_showingText6(){
+        System.out.println("반납 완료하였습니다");
+    }
+        
 
 
 

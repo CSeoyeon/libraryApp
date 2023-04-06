@@ -10,7 +10,7 @@ public class BookRegisterServiceImpl implements BookRegisterService{
 
     @Override
     public void register(Book book) {
-        bookRepository.saveBook(book);
+        bookRepository.save(book);
     }
 
 

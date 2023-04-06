@@ -4,9 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import service.core.AppConfig;
-import service.core.Borrower.BorrowerService;
-
-import static org.junit.jupiter.api.Assertions.*;
+import service.core.loan.LoanState;
 
 class BookRegisterServiceTest {
 

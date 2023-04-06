@@ -3,6 +3,9 @@ package service.core.Book;
 import java.util.HashMap;
 
 public interface BookRepository {
-    void saveBook(Book book);
+    void save(Book book);
     HashMap getBook();
+
+    void setBookNotLoanState(Long bookId);
+    void setBookOnLoanState(Long bookId);
 }
