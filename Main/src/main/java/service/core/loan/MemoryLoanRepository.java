@@ -9,4 +9,9 @@ public class MemoryLoanRepository implements LoanRepository{
     public void save(Loan loan) {
         loanHashMap.put(loan.getonLoanBookId(), loan);
     }
+
+    @Override
+    public HashMap<Long, Loan> getLoan() {
+        return loanHashMap;
+    }
 }

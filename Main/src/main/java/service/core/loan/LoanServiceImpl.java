@@ -5,6 +5,7 @@ import service.core.Book.BookRepository;
 import service.core.Borrower.Borrower;
 import service.core.Borrower.BorrowerRepository;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -22,7 +23,7 @@ public class LoanServiceImpl implements LoanService {
     }
 
     @Override
-    public ArrayList<Book> LoanPossibleBooks() {
+    public ArrayList<Book> loanPossibleBooks() {
         HashMap hashMap = bookRepository.getBook();
         ArrayList<Book> arrayList = new ArrayList<>();
 
@@ -37,7 +38,7 @@ public class LoanServiceImpl implements LoanService {
 
 
     @Override
-    public ArrayList<Book> LoanImpossibleBooks() {
+    public ArrayList<Book> loanImpossibleBooks() {
         HashMap hashMap = bookRepository.getBook();
         ArrayList<Book> arrayList = new ArrayList<>();
 
@@ -49,6 +50,27 @@ public class LoanServiceImpl implements LoanService {
 
         }
         return arrayList;
+    }
+
+    @Override
+    public ArrayList<Loan> loanHistory() {
+        HashMap hashMap = loanRepository.getLoan();
+        ArrayList<Loan> arrayList = new ArrayList<>();
+        for(Object x : hashMap.values()){
+            arrayList.add((Loan) x);
+        }
+        return arrayList;
+    }
+
+    @Override
+    public void historyToString(ArrayList<Loan> arrayList){
+        for(Loan x : arrayList){
+            System.out.print(
+                    "날짜: " + x.getDate() + ", 대출 상태:" + x.getLoanState()
+                    + ", 도서명: " + x.getonLoanBookId() + ", 대출자: " + x.getonLoanBorrowerId()
+                    +"\n"
+            );
+        }
     }
 
     @Override
@@ -70,8 +92,8 @@ public class LoanServiceImpl implements LoanService {
     @Override
     public void makeBackLoan(Long bookId, Long borrowerId) {
         Date localDate = new Date();
-        Loan loan = new Loan(bookId, borrowerId, localDate, LoanState.COMPLETE_BACKLOAN);
-        loanRepository.save(loan);
+        Loan backLoan = new Loan(bookId, borrowerId, localDate, LoanState.COMPLETE_BACKLOAN);
+        loanRepository.save(backLoan);
     }
 
     @Override
@@ -80,6 +102,8 @@ public class LoanServiceImpl implements LoanService {
         makeBackLoan(bookId, borrowerId);
         return LoanState.COMPLETE_BACKLOAN;
     }
+
+
 
 
     @Override

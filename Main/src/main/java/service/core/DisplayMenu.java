@@ -24,10 +24,13 @@ public class DisplayMenu {
         System.out.println("서비스를 종료합니다.");
         quit();
     }
+    public void history_showingText(){
+        System.out.println("대출/반납 기록을 출력합니다.");
+    }
 
     //1
     public void registerBorrower_showingText1(){
-        System.out.println("등록 할 이용자의 아이디를 입력하세요.");
+        System.out.println("등록 할 이용자의 아이디(숫자)를 입력하세요.");
     }
     public void registerBorrower_showingText2(){
         System.out.println("등록 할 이용자의 이름을 입력하세요.");
@@ -35,7 +38,7 @@ public class DisplayMenu {
 
     //2
     public void registerBook_showingText1(){
-        System.out.println("등록 할 도서의 고유번호를 입력하세요");
+        System.out.println("등록 할 도서의 고유번호(숫자)를 입력하세요");
     }
     public void registerBook_showingText2(){
         System.out.println("등록 할 도서의 이름을 입력하세요.");
@@ -58,7 +61,7 @@ public class DisplayMenu {
 
     //5
     public void LoanBook_showingText1(){
-        System.out.println("이용자의 아이디를 입력하세요");
+        System.out.println("이용자의 아이디(숫자)를 입력하세요");
     }
     public void LoanBook_showingText2(){
         System.out.println("등록되지 않은 이용자입니다.");
@@ -67,7 +70,7 @@ public class DisplayMenu {
         System.out.println("대출 가능한 권수(5권)을 모두 대출하셨습니다.");
     }
     public void LoanBook_showingText4(){
-        System.out.println("대출할 도서의 고유 번호를 입력하세요.");
+        System.out.println("대출할 도서의 고유 번호(숫자)를 입력하세요.");
     }
     public void LoanBook_showingText5(){
         System.out.println("대출이 완료되었습니다.");
@@ -79,14 +82,14 @@ public class DisplayMenu {
 
     //6
     public void backLoan_showingText1(){
-        System.out.println("이용자의 아이디를 입력하세요");
+        System.out.println("이용자의 아이디(숫자)를 입력하세요");
     }
 
     public void backLoan_showingText2(){
         System.out.println("등록되지 않은 이용자입니다.");
     }
     public void backLoan_showingText3(){
-        System.out.println("반납 할 도서의 고유번호를 입력하세요");
+        System.out.println("반납 할 도서의 고유번호(숫자)를 입력하세요");
     }
     public void backLoan_showingText4(){
         System.out.println("등록되지 않은 도서입니다.");
